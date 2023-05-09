@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import './Palette.css';
-
+//
 import ColorBox from "../ColorBox/ColorBox";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
