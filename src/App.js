@@ -6,6 +6,6 @@ import { generatePalette } from "./helpers/colorHelpers";
 export default function App(){
   console.log(generatePalette(seedColors[4]));
   return(
-    <Palette {...seedColors[0]}/>
+    <Palette palette={generatePalette(seedColors[3])}/>
   );
 }
