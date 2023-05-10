@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Slider from 'rc-slider';
 import { NativeSelect } from '@mui/material';
 
@@ -5,6 +7,7 @@ import 'rc-slider/assets/index.css';
 import './NavBar.css';
 
 export default function NavBar({level, changeLevel, handleSelect}){
+
   return(
     <header className='navbar'>
       <div className='logo'>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import SnackBar from '../NavBar/SnackBar';
 import ColorBox from "../ColorBox/ColorBox";
 import NavBar from '../NavBar/NavBar';
 import './Palette.css';
@@ -7,6 +8,7 @@ import './Palette.css';
 export default function Palette({palette}){
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState('hex');
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   const colorBoxes = palette.colors[level].map((color) => {
     return (
@@ -24,6 +26,7 @@ export default function Palette({palette}){
 
   const handleSelect = (e) => {
     setFormat(e.target.value);
+    setShowSnackbar(true);
   }
 
   return(
@@ -32,6 +35,11 @@ export default function Palette({palette}){
         level={level} 
         changeLevel={changeLevel}
         handleSelect={handleSelect}
+      />
+      <SnackBar 
+        format={format} 
+        setShowSnackbar={setShowSnackbar} 
+        showSnackbar={showSnackbar}
       />
       {/* navbar goes here */}
       <div className='palette-colors'>
