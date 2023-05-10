@@ -45,7 +45,10 @@ export default function Palette({palette}){
       <div className='palette-colors'>
         {colorBoxes}
       </div>
-      {/* footer */}
+      <footer className='palette-footer'>
+        {palette.paletteName}
+        <span className='emoji'>{palette.emoji}</span>
+      </footer>
     </div>
   );
 }
