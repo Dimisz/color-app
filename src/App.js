@@ -1,14 +1,24 @@
 import Palette from "./components/Palette/Palette";
 import seedColors from "./helpers/seedColors";
 import { generatePalette } from "./helpers/colorHelpers";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 
-const InividualPalette = () => {
-  return <h1>Individual palette</h1>
+const findPalette = (id) => {
+  return seedColors.find((palette) => {
+    return palette.id === id;
+  });
+  // return seedColors[id];
+}
+
+const PaletteWrapper = () => {
+  const { id } = useParams();
+  console.log(id);
+  const palette = generatePalette(findPalette(id));
+  return <Palette palette={palette} />;
 }
 
 export default function App(){
-  console.log(generatePalette(seedColors[4]));
+  // console.log(generatePalette(seedColors[4]));
   return(
     <Routes>
       <Route path='/palette' element={
@@ -17,7 +27,7 @@ export default function App(){
         />} 
       />
       <Route path='/palette/:id' element={
-        <InividualPalette/>} 
+        <PaletteWrapper />} 
       />
     </Routes>
     // 
