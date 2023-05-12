@@ -4,7 +4,7 @@ import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 
-export default function ColorBox({background, name}){
+export default function ColorBox({background, name, colorBoxUrl}){
   const [isCopied, setIsCopied] = useState(false);
   
   const showOverlay = () => {
@@ -34,7 +34,7 @@ export default function ColorBox({background, name}){
           </div>
           <button className='copy-btn'>Copy</button>
         </div>
-        <Link to='/' onClick={(e) => e.stopPropagation()}>
+        <Link to={`/palette/${colorBoxUrl}`} onClick={(e) => e.stopPropagation()}>
           <span className='see-more'>MORE</span>
         </Link>
       </div>

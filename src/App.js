@@ -1,8 +1,11 @@
+import { Route, Routes, useParams } from 'react-router-dom';
+
 import Palette from "./components/Palette/Palette";
 import PaletteList from "./components/PaletteList/PaletteList";
+import SingleColorPalette from "./components/SingleColorPalette/SingleColorPalette";
+
 import seedColors from "./helpers/seedColors";
 import { generatePalette } from "./helpers/colorHelpers";
-import { Route, Routes, useParams } from 'react-router-dom';
 
 
 const findPalette = (id) => {
@@ -33,7 +36,7 @@ export default function App(){
       />
       <Route 
           path='/palette/:paletteId/:colorId'
-          element={<h1>Single Color Page</h1>}
+          element={<SingleColorPalette/>}
       />
     </Routes>
     // 

@@ -16,6 +16,7 @@ export default function Palette({palette}){
         key={color.name} 
         background={color[format]} 
         name={color.name}
+        colorBoxUrl={`${palette.id}/${color.id}`}
       />
     )
   });
