@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 6vh;
 }
 
@@ -13,13 +13,19 @@
   font-family: Roboto;
   height: 100%;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
 
-.logo {
+.logo a {
   text-decoration: none;
   color: black;
 }
+
+/* .logo {
+  text-decoration: none;
+  color: black;
+} */
 
 .slider {
   width: 340px;

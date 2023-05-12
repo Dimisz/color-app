@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import './ColorBox.css';
+import styles from './ColorBox.module.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 
@@ -23,21 +23,21 @@ export default function ColorBox({
     <CopyToClipboard text={background} onCopy={showOverlay}>
       <div
         style={{background}}
-        className='color-box'
+        className={styles['color-box']}
       >
         <div 
-          className={`copy-overlay ${isCopied ? 'show' : ''}`}
+          className={styles[`copy-overlay ${isCopied ? 'show' : ''}`]}
           style={{background}}
         ></div>
-        <div className={`copy-message ${isCopied ? 'show' : ''}`}>
+        <div className={styles[`copy-message ${isCopied ? 'show' : ''}`]}>
           <h1>Copied!</h1>
           <p>{background}</p>
         </div>
-        <div className='copy-container'>
-          <div className='box-content'>
+        <div className={styles['copy-container']}>
+          <div className={styles['box-content']}>
             <span>{name}</span>
           </div>
-          <button className='copy-btn'>Copy</button>
+          <button className={styles['copy-btn']}>Copy</button>
         </div>
         { showLink &&
             <Link to={`/palette/${colorBoxUrl}`} onClick={(e) => e.stopPropagation()}>

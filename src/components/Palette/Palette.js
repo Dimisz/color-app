@@ -3,7 +3,9 @@ import { useState } from 'react';
 import SnackBar from '../NavBar/SnackBar';
 import ColorBox from "../ColorBox/ColorBox";
 import NavBar from '../NavBar/NavBar';
-import './Palette.css';
+import PaletteFooter from '../PaletteFooter/PaletteFooter';
+
+import styles from './Palette.module.css';
 
 export default function Palette({palette}){
   const [level, setLevel] = useState(500);
@@ -32,25 +34,22 @@ export default function Palette({palette}){
   }
 
   return(
-    <div className="palette">
+    <div className={styles.palette}>
       <NavBar 
         level={level} 
         changeLevel={changeLevel}
         handleSelect={handleSelect}
+        showSlider={true}
       />
       <SnackBar 
         format={format} 
         setShowSnackbar={setShowSnackbar} 
         showSnackbar={showSnackbar}
       />
-      {/* navbar goes here */}
-      <div className='palette-colors'>
+      <div className={styles['palette-colors']}>
         {colorBoxes}
       </div>
-      <footer className='palette-footer'>
-        {palette.paletteName}
-        <span className='emoji'>{palette.emoji}</span>
-      </footer>
+      <PaletteFooter palette={palette} />
     </div>
   );
 }
