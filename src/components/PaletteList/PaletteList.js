@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
+import styles from './PaletteList.module.css';
 
 export default function PaletteList({palettes}){
   
@@ -8,10 +9,15 @@ export default function PaletteList({palettes}){
   });
 
   return(
-    <div>
-      <MiniPalette/>
-      <h1>React Colors</h1>
-      {renderedPalettes}
+    <div className={styles.root}>
+      <div className={styles.container}>
+        <nav className={styles.nav}>
+          <h1>React Colors</h1>
+        </nav>
+        <div className={styles.palettes}>
+          {renderedPalettes}
+        </div>
+      </div>
     </div>
   );
 } 
