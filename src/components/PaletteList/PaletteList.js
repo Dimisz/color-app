@@ -5,7 +5,11 @@ import styles from './PaletteList.module.css';
 export default function PaletteList({palettes}){
   
   const renderedPalettes = palettes.map((palette) => {
-    return <MiniPalette key={palette.id} {...palette}/>;
+    return (
+    // <Link key={palette.id} to={`/palette/${palette.id}`}>
+      <MiniPalette key={palette.id} {...palette}/>
+    // </Link>
+    );
   });
 
   return(
