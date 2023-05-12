@@ -11,12 +11,20 @@
   align-items: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
+  border: 1px solid white;
 }
 
 .nav {
-
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: white;
 }
 
 .palettes {
-
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  grid-gap: 5%;
 }
