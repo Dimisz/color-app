@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Slider from 'rc-slider';
 import { NativeSelect } from '@mui/material';
@@ -11,7 +12,7 @@ export default function NavBar({level, changeLevel, handleSelect}){
   return(
     <header className='navbar'>
       <div className='logo'>
-        <a href='#'>Color Picker</a>
+        <Link to='/'>Color Picker</Link>
       </div>
       <div className='slider-container'>
         <span>Level: {level}</span>
