@@ -23,11 +23,17 @@ export default function App(){
   // console.log(generatePalette(seedColors[4]));
   return(
     <Routes>
-      <Route path='/' element={
-        <PaletteList palettes={seedColors}/>} 
+      <Route 
+          path='/' 
+          element={<PaletteList palettes={seedColors}/>} 
       />
-      <Route path='/palette/:id' element={
-        <PaletteWrapper />} 
+      <Route 
+          path='/palette/:id' 
+          element={<PaletteWrapper />} 
+      />
+      <Route 
+          path='/palette/:paletteId/:colorId'
+          element={<h1>Single Color Page</h1>}
       />
     </Routes>
     // 
