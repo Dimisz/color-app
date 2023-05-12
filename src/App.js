@@ -17,9 +17,21 @@ const findPalette = (id) => {
 
 const PaletteWrapper = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const palette = generatePalette(findPalette(id));
   return <Palette palette={palette} />;
+}
+
+const SingleColorPaletteWrapper = () => {
+  const { paletteId, colorId } = useParams();
+  console.log(paletteId, colorId);
+  const palette = generatePalette(findPalette(paletteId));
+  return(
+    <SingleColorPalette 
+          palette={palette} 
+          colorId={colorId}
+    />
+  );
 }
 
 export default function App(){
@@ -36,7 +48,7 @@ export default function App(){
       />
       <Route 
           path='/palette/:paletteId/:colorId'
-          element={<SingleColorPalette/>}
+          element={<SingleColorPaletteWrapper/>}
       />
     </Routes>
     // 
