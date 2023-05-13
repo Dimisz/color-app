@@ -8,7 +8,8 @@ export default function ColorBox({
   background, 
   name, 
   colorBoxUrl,
-  showLink
+  showLink,
+  singleColorPalette
 }){
   const [isCopied, setIsCopied] = useState(false);
   
@@ -23,7 +24,7 @@ export default function ColorBox({
     <CopyToClipboard text={background} onCopy={showOverlay}>
       <div
         style={{background}}
-        className={styles['color-box']}
+        className={`${styles['color-box']} ${singleColorPalette ? styles['single-color-palette'] : ''}`}
       >
         <div 
           className={`${styles['copy-overlay']} ${isCopied ? styles.show : ''}`}
@@ -41,7 +42,7 @@ export default function ColorBox({
         </div>
         { showLink &&
             <Link to={`/palette/${colorBoxUrl}`} onClick={(e) => e.stopPropagation()}>
-              <span className='see-more'>MORE</span>
+              <span className={styles['see-more']}>MORE</span>
             </Link>
         }
       </div>

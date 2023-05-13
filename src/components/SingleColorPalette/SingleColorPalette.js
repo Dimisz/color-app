@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import styles from '../Palette/Palette.module.css';
+import colorboxStyles from '../ColorBox/ColorBox.module.css';
 
 import ColorBox from '../ColorBox/ColorBox';
 import NavBar from '../NavBar/NavBar';
@@ -41,12 +44,13 @@ export default function SingleColorPalette({palette, colorId}){
         name={shade.name}
         background={shade[format]}
         showLink={false}
+        singleColorPalette={true}
       />
     );
   })
 
   return(
-    <div className={styles.palette}>
+    <div className={`${styles.palette} ${styles['single-color-palette']}`}>
       <NavBar handleSelect={handleSelect} showSlider={false}/>
       <SnackBar 
         format={format} 
@@ -55,6 +59,17 @@ export default function SingleColorPalette({palette, colorId}){
       />
       <div className={styles['palette-colors']}>
         {renderedShades}
+        <div 
+          className={
+            `${colorboxStyles['color-box']} ${colorboxStyles['go-back']}`
+          }
+        >
+          <Link 
+            to={`/palette/${palette.id}`}
+            className={colorboxStyles['back-btn']}
+          >GO BACK
+          </Link>
+        </div>
       </div>
       <PaletteFooter palette={palette}/>
     </div>
