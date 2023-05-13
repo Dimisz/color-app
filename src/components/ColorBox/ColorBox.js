@@ -26,10 +26,10 @@ export default function ColorBox({
         className={styles['color-box']}
       >
         <div 
-          className={styles[`copy-overlay ${isCopied ? 'show' : ''}`]}
+          className={`${styles['copy-overlay']} ${isCopied ? styles.show : ''}`}
           style={{background}}
         ></div>
-        <div className={styles[`copy-message ${isCopied ? 'show' : ''}`]}>
+        <div className={`${styles['copy-message']} ${isCopied ? styles.show : ''}`}>
           <h1>Copied!</h1>
           <p>{background}</p>
         </div>
