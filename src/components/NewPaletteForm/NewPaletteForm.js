@@ -66,7 +66,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function NewPaletteForm(){
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [colors, setColors] = useState(['purple', 'yellow']);
+
+  const addColor = (colorName) => {
+    setColors((prev) => [...prev, colorName])
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -115,10 +120,13 @@ export default function NewPaletteForm(){
         </DrawerHeader>
         <Divider />
 
-        <ColorPicker />
+        <ColorPicker onAdd={addColor}/>
         
       </Drawer>
       <Main open={open}>
+        {
+          colors.map((color) => <p key={color}>{color}</p>)
+        }
         <DrawerHeader />
       </Main>
     </Box>
