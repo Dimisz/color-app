@@ -68,10 +68,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function NewPaletteForm(){
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [colors, setColors] = useState(['purple', 'yellow']);
+  const [colors, setColors] = useState([]);
 
-  const addColor = (colorName) => {
-    setColors((prev) => [...prev, colorName])
+  const addColor = (color) => {
+    setColors((prev) => [...prev, color]);
   }
 
   const handleDrawerOpen = () => {
@@ -121,12 +121,15 @@ export default function NewPaletteForm(){
         </DrawerHeader>
         <Divider />
 
-        <ColorPicker onAdd={addColor}/>
+        <ColorPicker onAdd={addColor} colors={colors} />
         
       </Drawer>
       <Main open={open}>
         {
-          colors.map((color) => <DraggableColorBox key={color} color={color}/>)
+          colors.map((color) => {
+            // console.log(color);
+            return <DraggableColorBox key={color.color} color={color}/>
+          })
         }
         <DrawerHeader />
       </Main>

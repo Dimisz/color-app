@@ -4,9 +4,9 @@ export default function DraggableColorBox({color}){
   return(
     <div 
       className={styles.root}
-      style={{backgroundColor: color}}
+      style={{backgroundColor: color.color}}
     >
-      {color}
+      {color.name}
     </div>
   )
 }
