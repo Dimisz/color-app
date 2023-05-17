@@ -8,13 +8,15 @@ import {
   Toolbar,
   Typography,
   Divider,
-  IconButton
+  IconButton,
+  Button
 } from "@mui/material";
 
 import { Menu, ChevronLeft } from "@mui/icons-material";
+import { ChromePicker } from "react-color";
+import ColorPicker from "./ColorPicker";
 
-
- const drawerWidth = 240;
+const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -112,11 +114,12 @@ export default function NewPaletteForm(){
           </IconButton>
         </DrawerHeader>
         <Divider />
+
+        <ColorPicker />
         
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-
       </Main>
     </Box>
   );
