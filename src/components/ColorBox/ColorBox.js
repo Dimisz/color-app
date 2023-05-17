@@ -22,7 +22,7 @@ export default function ColorBox({
   }
 
   const isDarkColor = chroma(background).luminance() <= 0.08;
-  const isLightColor = chroma(background).luminance() > 0.7;
+  const isLightColor = chroma(background).luminance() >= 0.7;
 
   return(
     <CopyToClipboard text={background} onCopy={showOverlay}>

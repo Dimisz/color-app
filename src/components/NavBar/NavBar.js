@@ -15,7 +15,7 @@ export default function NavBar({level, changeLevel, handleSelect, showSlider}){
         <Link to='/'>Color Picker</Link>
       </div>
       {showSlider &&
-      <div className={styles['slider-container']}>
+      <div>
         <span>Level: {level}</span>
         <div className={styles.slider}>
             <Slider
