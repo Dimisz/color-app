@@ -19,7 +19,7 @@ export default function SingleColorPalette({palette, colorId}){
     setShowSnackbar(true);
   }
 
-  const colorName = colorId.split('-')[0];
+  const colorName = colorId.replace(/[^A-Za-z]/g, '').toLowerCase();
   const makeShades = (palette, colorName) => {
     let shades = [];
     const allColors = palette.colors;
@@ -27,7 +27,7 @@ export default function SingleColorPalette({palette, colorId}){
     for(let key in allColors){
       shades = shades.concat(
         allColors[key].filter((color) => {
-          return color.id.split('-')[0] === colorName;
+          return color.id.replace(/[^A-Za-z]/g, '').toLowerCase() === colorName;
         })
       );
     }
