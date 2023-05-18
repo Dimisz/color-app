@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import { styled, useTheme } from '@mui/material/styles';
 import { 
@@ -65,7 +66,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-export default function NewPaletteForm(){
+const NewPaletteForm = ({savePalette}) => {
+  const history = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [colors, setColors] = useState([]);
@@ -82,10 +84,21 @@ export default function NewPaletteForm(){
     setOpen(false);
   };
 
+  const handleSavePalette = () => {
+    const newPalette = {
+      paletteName: 'New Test Palette',
+      id: 'new-test-palette',
+      emoji: '🇰🇭',
+      colors: colors
+    }
+    savePalette(newPalette);
+    history('/');
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" color='default' open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -99,6 +112,11 @@ export default function NewPaletteForm(){
           <Typography variant="h6" noWrap component="div">
             Persistent drawer
           </Typography>
+          <Button 
+            variant='contained' 
+            color='primary'
+            onClick={handleSavePalette}
+          >Save Palette</Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -136,3 +154,5 @@ export default function NewPaletteForm(){
     </Box>
   );
 }
+
+export default NewPaletteForm;
