@@ -1,4 +1,5 @@
 import styles from './DraggableColorBox.module.css';
+import { Delete } from '@mui/icons-material';
 
 export default function DraggableColorBox({color}){
   return(
@@ -6,7 +7,12 @@ export default function DraggableColorBox({color}){
       className={styles.root}
       style={{backgroundColor: color.color}}
     >
-      {color.name}
+      <div className={styles['box-content']}>
+        <span>{color.name}</span>
+        <Delete
+          className={styles['delete-icon']}
+        />
+      </div>
     </div>
   )
 }

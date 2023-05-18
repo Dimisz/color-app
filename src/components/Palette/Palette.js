@@ -18,7 +18,7 @@ export default function Palette({palette}){
         key={color.name} 
         background={color[format]} 
         name={color.name}
-        colorBoxUrl={`${palette.id}/${color.id}`}
+        colorBoxUrl={`${palette.id}/${color.id.replace(/[^a-zA-Z]/g, '')}`}
         showLink={true}
       />
     )

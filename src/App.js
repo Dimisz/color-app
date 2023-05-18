@@ -41,7 +41,7 @@ const App = () => {
     setPalettes((prev) => {
       return [...prev, newPalette];
     });
-    console.log(newPalette);
+    // console.log(newPalette);
   }
 
   return(
@@ -52,7 +52,11 @@ const App = () => {
       />
       <Route 
           path='/palette/new' 
-          element={<NewPaletteForm savePalette={savePalette} />} 
+          element={
+                    <NewPaletteForm 
+                      savePalette={savePalette} 
+                      allPalettes={palettes}
+                  />} 
       />
       <Route 
           path='/palette/:id' 
