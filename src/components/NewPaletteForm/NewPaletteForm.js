@@ -182,7 +182,7 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
         <DrawerHeader />
         <DraggableColorList
             colors={colors}
-            // setColors={setColors}
+            setColors={setColors}
             deleteColor={deleteColor}
           />
       </Main>
