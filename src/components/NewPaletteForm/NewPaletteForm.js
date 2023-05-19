@@ -16,6 +16,7 @@ import { Menu, ChevronLeft } from "@mui/icons-material";
 
 import ColorPicker from "./ColorPicker";
 import DraggableColorBox from "../DraggableColorBox/DraggableColorBox";
+import DraggableColorList from '../DraggableColorList/DraggableColorList';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 const drawerWidth = 400;
 
@@ -109,6 +110,13 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
     handleSavePalette();
   }
 
+  const deleteColor = (colorName) => {
+    const filteredColors = colors.filter((color) => {
+      return color.name !== colorName;
+    });
+    setColors(filteredColors);
+  }
+  
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -170,13 +178,13 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
         
       </Drawer>
       <Main open={open}>
-        {
-          colors.map((color) => {
-            // console.log(color);
-            return <DraggableColorBox key={color.color} color={color}/>
-          })
-        }
+        
         <DrawerHeader />
+        <DraggableColorList
+            colors={colors}
+            // setColors={setColors}
+            deleteColor={deleteColor}
+          />
       </Main>
     </Box>
   );
