@@ -15,6 +15,7 @@ import {
 import { Menu, ChevronLeft } from "@mui/icons-material";
 
 import ColorPicker from "./ColorPicker";
+import PaletteFormNav from './PaletteFormNav';
 import DraggableColorBox from "../DraggableColorBox/DraggableColorBox";
 import DraggableColorList from '../DraggableColorList/DraggableColorList';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
@@ -73,13 +74,14 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [colors, setColors] = useState(allPalettes[0].colors);
-  const [newPaletteName, setNewPaletteName] = useState('');
+  
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
-      return allPalettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase());
-    });
-  }, [allPalettes]);
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const clearColors = () => {
     setColors([]);
@@ -96,30 +98,6 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
     addColor(randomColor);
   }
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const handleSavePalette = () => {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.replace(/\s+/g, '-').toLowerCase(),
-      emoji: '🇰🇭',
-      colors: colors
-    }
-    savePalette(newPalette);
-    history('/');
-  }
-
-  const handleSubmitNewPalette = (e) => {
-    e.preventDefault();
-    handleSavePalette();
-  }
-
   const deleteColor = (colorName) => {
     const filteredColors = colors.filter((color) => {
       return color.name !== colorName;
@@ -129,41 +107,13 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
   
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" color='default' open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <Menu />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
-          <ValidatorForm onSubmit={handleSubmitNewPalette}>
-            <TextValidator
-              value={newPaletteName}
-              name='newPaletteName'
-              label='Palette Name'
-              onChange={(e) => setNewPaletteName(e.target.value)}
-              validators={['required', 'isPaletteNameUnique']}
-              errorMessages={['enter palette name', 'palette name already used']}
-            />
-            <Button 
-              variant='contained' 
-              color='primary'
-              type='submit'
-            >
-              Save Palette
-            </Button>
-          </ValidatorForm>
-          
-        </Toolbar>
-      </AppBar>
+      <PaletteFormNav 
+        savePalette={savePalette} 
+        allPalettes={allPalettes} 
+        handleDrawerOpen={handleDrawerOpen}
+        colors={colors}
+        open={open}
+      />
       <Drawer
         sx={{
           width: drawerWidth,
