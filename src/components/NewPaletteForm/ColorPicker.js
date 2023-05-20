@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Typography } from "@mui/material";
 import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import styles from './ColorPicker.module.css';
 
 export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}){
   const [currentColor, setCurrentColor] = useState('teal');
@@ -36,12 +37,13 @@ export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}
   }, [colors, currentColor]);
 
   return(
-       <>
-         <Typography variant='h4'>
+       <div className={styles.container}>
+         <Typography variant='h4' gutterBottom>
             Design You Palette
           </Typography>
-          <div>
+          <div className={styles.btns}>
             <Button 
+              className={styles.btn}
               variant='contained' 
               color='secondary'
               onClick={clearColors}
@@ -49,6 +51,7 @@ export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}
               Clear Palette
             </Button>
             <Button 
+              className={styles.btn}
               variant='contained' 
               color='primary'
               onClick={addRandomColor}
@@ -66,19 +69,26 @@ export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}
           <ChromePicker
             color={currentColor}
             onChangeComplete={updateColor}
+            className={styles.picker}
           />
           <ValidatorForm
             onSubmit={submitNewColor}
+            className={styles['validator-form']}
           >
             <TextValidator 
               value={enteredColorName}
               onChange={changeColorName}
+              placeholder='Color Name'
+              variant='filled'
+              margin='normal'
               validators={['required', 'isColorNameUnique', 'isColorUnique']}
               errorMessages={['this field is required', 'color name must be unique', 'color already used']}
+              className={styles['color-input']}
             />
             <Button 
             variant='contained' 
             color='primary'
+            className={styles['add-color']}
             style={{
               backgroundColor: paletteFull ? 'grey' : currentColor
             }}
@@ -94,6 +104,6 @@ export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}
             }
           </Button>
           </ValidatorForm>
-       </>
+       </div>
   )
 }

@@ -1,0 +1,48 @@
+.container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: 1rem;
+}
+
+.btns{
+
+}
+
+.picker {
+  width: 100% !important;
+  margin-top: 2rem;
+}
+
+.validator-form {
+  width: 100%;
+}
+
+.add-color {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.color-input {
+  width: 100%;
+  height: 70px;
+}
+
+.btns {
+  width: 100%;
+}
+
+.btn {
+  width: 50%;
+}
+
+/* .MuiDrawer-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
