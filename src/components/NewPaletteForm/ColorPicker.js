@@ -3,10 +3,11 @@ import { Button, Typography } from "@mui/material";
 import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-export default function ColorPicker({onAdd, colors}){
+export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}){
   const [currentColor, setCurrentColor] = useState('teal');
   const [enteredColorName, setEnteredColorName] = useState('');
- 
+  
+  const paletteFull = colors.length > 19;
   
   const changeColorName = (e) => {
     setEnteredColorName(e.target.value);
@@ -39,11 +40,26 @@ export default function ColorPicker({onAdd, colors}){
             Design You Palette
           </Typography>
           <div>
-            <Button variant='contained' color='secondary'>
+            <Button 
+              variant='contained' 
+              color='secondary'
+              onClick={clearColors}
+            >
               Clear Palette
             </Button>
-            <Button variant='contained' color='primary'>
-              Random Color
+            <Button 
+              variant='contained' 
+              color='primary'
+              onClick={addRandomColor}
+              disabled={paletteFull}
+            >
+              {
+              paletteFull 
+              ?
+              'Palette Full'
+              :
+              'Random Color'
+            }
             </Button>
           </div>
           <ChromePicker
@@ -63,11 +79,18 @@ export default function ColorPicker({onAdd, colors}){
             variant='contained' 
             color='primary'
             style={{
-              backgroundColor: currentColor
+              backgroundColor: paletteFull ? 'grey' : currentColor
             }}
             type='submit'
+            disabled={paletteFull}
           >
-            Add Color
+            {
+              paletteFull 
+              ?
+              'Palette Full'
+              :
+              'Add Color'
+            }
           </Button>
           </ValidatorForm>
        </>

@@ -72,7 +72,7 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
   const history = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState(allPalettes[0].colors);
   const [newPaletteName, setNewPaletteName] = useState('');
 
   useEffect(() => {
@@ -81,9 +81,19 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
     });
   }, [allPalettes]);
 
+  const clearColors = () => {
+    setColors([]);
+  }
 
   const addColor = (color) => {
     setColors((prev) => [...prev, color]);
+  }
+
+  const addRandomColor = () => {
+    const randomPaletteIdx = Math.floor(Math.random() * allPalettes.length);
+    const randomColorIdx = Math.floor(Math.random() * allPalettes[randomPaletteIdx].colors.length);
+    const randomColor = allPalettes[randomPaletteIdx].colors[randomColorIdx];
+    addColor(randomColor);
   }
 
   const handleDrawerOpen = () => {
@@ -174,7 +184,12 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
         </DrawerHeader>
         <Divider />
 
-        <ColorPicker onAdd={addColor} colors={colors} />
+        <ColorPicker 
+          onAdd={addColor} 
+          colors={colors} 
+          clearColors={clearColors}
+          addRandomColor={addRandomColor}
+        />
         
       </Drawer>
       <Main open={open}>
