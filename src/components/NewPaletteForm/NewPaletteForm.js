@@ -1,24 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { styled, useTheme } from '@mui/material/styles';
-import { 
-  Box,
-  Drawer,
-  CssBaseline,
-  AppBar,
-  Toolbar,
-  Typography,
-  Divider,
-  IconButton,
-  Button
-} from "@mui/material";
-import { Menu, ChevronLeft } from "@mui/icons-material";
+import { Box, Drawer, AppBar,Divider, IconButton } from "@mui/material";
+import { ChevronLeft } from "@mui/icons-material";
 
 import ColorPicker from "./ColorPicker";
 import PaletteFormNav from './PaletteFormNav';
-import DraggableColorBox from "../DraggableColorBox/DraggableColorBox";
 import DraggableColorList from '../DraggableColorList/DraggableColorList';
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -42,22 +30,22 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-const MuiAppBar = styled(AppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+// const MuiAppBar = styled(AppBar, {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })(({ theme, open }) => ({
+//   transition: theme.transitions.create(['margin', 'width'], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   ...(open && {
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     marginLeft: `${drawerWidth}px`,
+//     transition: theme.transitions.create(['margin', 'width'], {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//   }),
+// }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',

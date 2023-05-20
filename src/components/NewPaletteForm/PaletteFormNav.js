@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
+import styles from './PaletteFormNav.module.css';
 
 import { 
   CssBaseline,
@@ -44,7 +45,7 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
   return(
     <>
       <CssBaseline />
-      <AppBar position="fixed" color='default' open={open}>
+      <AppBar position="fixed" color='default' open={open} className={styles.appbar}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -56,34 +57,35 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
             <Menu />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
-          <ValidatorForm onSubmit={handleSubmitNewPalette}>
-            <TextValidator
-              value={newPaletteName}
-              name='newPaletteName'
-              label='Palette Name'
-              onChange={(e) => setNewPaletteName(e.target.value)}
-              validators={['required', 'isPaletteNameUnique']}
-              errorMessages={['enter palette name', 'palette name already used']}
-            />
-            <Button 
-              variant='contained' 
-              color='primary'
-              type='submit'
-            >
-              Save Palette
-            </Button>
-            <Button 
-              onClick={() => history('/')}
-              variant='contained' 
-              color='secondary'
-            >
-              Go Back
-            </Button>
-          </ValidatorForm>
-          
+            Create a Palette
+          </Typography>  
         </Toolbar>
+        <div className={styles['nav-bts']}>
+            <ValidatorForm onSubmit={handleSubmitNewPalette}>
+              <TextValidator
+                value={newPaletteName}
+                name='newPaletteName'
+                label='Palette Name'
+                onChange={(e) => setNewPaletteName(e.target.value)}
+                validators={['required', 'isPaletteNameUnique']}
+                errorMessages={['enter palette name', 'palette name already used']}
+              />
+              <Button
+                variant='contained'
+                color='primary'
+                type='submit'
+              >
+                Save Palette
+              </Button>
+            </ValidatorForm>
+            <Button
+                onClick={() => history('/')}
+                variant='contained'
+                color='secondary'
+              >
+                Go Back
+            </Button>
+          </div>
       </AppBar>
     </>
   )

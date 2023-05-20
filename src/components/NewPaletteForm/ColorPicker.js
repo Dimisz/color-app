@@ -23,6 +23,7 @@ export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}
       name: enteredColorName
     }
     onAdd(newColor);
+    setEnteredColorName('');
   }
  
   useEffect(() => {
