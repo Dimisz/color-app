@@ -127,7 +127,7 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
           colors={colors} 
           clearColors={clearColors}
           addRandomColor={addRandomColor}
-          style={{display: 'flex', alignItems: 'center'}}
+          // style={{display: 'flex', alignItems: 'center'}}
         />
         
       </Drawer>

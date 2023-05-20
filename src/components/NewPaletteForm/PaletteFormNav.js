@@ -11,36 +11,37 @@ import {
   Button
 } from "@mui/material";
 import { Menu } from "@mui/icons-material";
+import FormDialog from './FormDialog';
 
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
+// import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 
 
 const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, open}) => {
-  const [newPaletteName, setNewPaletteName] = useState('');
+  // const [newPaletteName, setNewPaletteName] = useState('');
   const history = useNavigate();
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
-      return allPalettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase());
-    });
-  }, [allPalettes]);
+  // useEffect(() => {
+  //   ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
+  //     return allPalettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase());
+  //   });
+  // }, [allPalettes]);
 
 
-  const handleSavePalette = () => {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.replace(/\s+/g, '-').toLowerCase(),
-      emoji: '🇰🇭',
-      colors: colors
-    }
-    savePalette(newPalette);
-    history('/');
-  }
+  // const handleSavePalette = () => {
+  //   const newPalette = {
+  //     paletteName: newPaletteName,
+  //     id: newPaletteName.replace(/\s+/g, '-').toLowerCase(),
+  //     emoji: '🇰🇭',
+  //     colors: colors
+  //   }
+  //   savePalette(newPalette);
+  //   history('/');
+  // }
 
-  const handleSubmitNewPalette = (e) => {
-    e.preventDefault();
-    handleSavePalette();
-  }
+  // const handleSubmitNewPalette = (e) => {
+  //   e.preventDefault();
+  //   handleSavePalette();
+  // }
 
   return(
     <>
@@ -61,7 +62,7 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
           </Typography>  
         </Toolbar>
         <div className={styles['nav-bts']}>
-            <ValidatorForm onSubmit={handleSubmitNewPalette}>
+            {/* <ValidatorForm onSubmit={handleSubmitNewPalette}>
               <TextValidator
                 value={newPaletteName}
                 name='newPaletteName'
@@ -77,7 +78,8 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
               >
                 Save Palette
               </Button>
-            </ValidatorForm>
+            </ValidatorForm> */}
+            <FormDialog allPalettes={allPalettes} savePalette={savePalette} colors={colors}/>
             <Button
                 onClick={() => history('/')}
                 variant='contained'
