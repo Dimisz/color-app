@@ -1,7 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Drawer, AppBar,Divider, IconButton } from "@mui/material";
+import { Box, Drawer, Divider, IconButton } from "@mui/material";
 import { ChevronLeft } from "@mui/icons-material";
 
 import ColorPicker from "./ColorPicker";
@@ -13,7 +12,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
     height: 'calc(100vh - 64px)',
-    padding: theme.spacing(3),
+    // padding: theme.spacing(3),
+    padding: 0,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -30,26 +30,11 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-// const MuiAppBar = styled(AppBar, {
-//   shouldForwardProp: (prop) => prop !== 'open',
-// })(({ theme, open }) => ({
-//   transition: theme.transitions.create(['margin', 'width'], {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   ...(open && {
-//     width: `calc(100% - ${drawerWidth}px)`,
-//     marginLeft: `${drawerWidth}px`,
-//     transition: theme.transitions.create(['margin', 'width'], {
-//       easing: theme.transitions.easing.easeOut,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//   }),
-// }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
+  width: '100%',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
@@ -58,8 +43,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 const NewPaletteForm = ({savePalette, allPalettes}) => {
-  const history = useNavigate();
-  const theme = useTheme();
+  // const history = useNavigate();
+  // const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [colors, setColors] = useState(allPalettes[0].colors);
   

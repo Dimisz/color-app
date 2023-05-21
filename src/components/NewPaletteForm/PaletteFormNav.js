@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from './PaletteFormNav.module.css';
 
 import { 
@@ -10,7 +10,7 @@ import {
   IconButton,
   Button
 } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { AddToPhotos } from "@mui/icons-material";
 import FormDialog from './FormDialog';
 
 
@@ -21,10 +21,17 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
     <>
       <CssBaseline />
       <AppBar 
-        className={styles.appbar}
+        // className={styles.appbar}
         position="fixed" 
         color='default' 
         open={open} 
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          height: '64px'
+        }}
       >
         <Toolbar>
           <IconButton
@@ -34,24 +41,42 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <Menu />
+            <AddToPhotos />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography 
+            variant="h5" 
+            noWrap color='inherit' 
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+          >
             Create a Palette
           </Typography>  
         </Toolbar>
+        {/* <Typography 
+            variant="h5" 
+            noWrap color='inherit' 
+          >
+            Create a Palette
+          </Typography>  */}
         <div className={styles['nav-bts']}>
             <FormDialog 
               allPalettes={allPalettes} 
               savePalette={savePalette} 
               colors={colors}
               className={styles.btn}
+              style={{
+                marginRight: '0.5rem',
+                marginLeft: '0.5rem'
+              }}
             />
             <Button
                 onClick={() => history('/')}
                 variant='contained'
                 color='secondary'
                 className={styles.btn}
+                style={{
+                  marginRight: '0.5rem',
+                  marginLeft: '0.5rem'
+                }}
               >
                 Go Back
             </Button>

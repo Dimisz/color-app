@@ -100,7 +100,7 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
             </DialogContent>
             <DialogActions>
                 <Button
-                  // variant='contained'
+                  variant='contained'
                   // color='primary'
                   type='submit'
                 >
