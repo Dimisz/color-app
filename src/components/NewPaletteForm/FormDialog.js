@@ -17,10 +17,11 @@ import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 
 const FormDialog = ({allPalettes, savePalette, colors}) => {
   const [open, setOpen] = useState(false);
+  const [emojiOpen, setEmojiOpen] = useState(false);
+
   const [newPaletteName, setNewPaletteName] = useState('');
   const history = useNavigate();
-  // new Picker({data});
-  console.log(data);
+
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
@@ -36,22 +37,29 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
     setOpen(false);
   };
 
-  const handleSavePalette = () => {
+  const handleSavePalette = (emoji) => {
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.replace(/\s+/g, '-').toLowerCase(),
-      emoji: '🇰🇭',
+      emoji: emoji,
       colors: colors
     }
     savePalette(newPalette);
     history('/');
   }
 
+  const handleEmojiSelect = (val) => {
+    setEmojiOpen(false);
+    handleSavePalette(val.native);
+  }
+
   const handleSubmitNewPalette = (e) => {
     e.preventDefault();
-    handleSavePalette();
     handleClose();
+    setEmojiOpen(true);
   }
+
+  
 
 
   return (
@@ -62,6 +70,13 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
       >
         Save Palette
       </Button>
+
+      <Dialog open={emojiOpen} onClose={handleClose}>
+        <Picker 
+          data={data} 
+          onEmojiSelect={handleEmojiSelect} theme='light'
+        />
+      </Dialog>
 
       <Dialog open={open} onClose={handleClose}>
         <ValidatorForm onSubmit={handleSubmitNewPalette}>
@@ -83,10 +98,6 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
                   margin="dense"
                 />
             </DialogContent>
-            {/* <Picker 
-              data={data} 
-              onEmojiSelect={() => console.log('selected emji')} theme='light'
-            /> */}
             <DialogActions>
                 <Button
                   // variant='contained'
