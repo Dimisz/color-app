@@ -20,8 +20,8 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
   return(
     <>
       <CssBaseline />
-      <AppBar position="fixed" color='default' open={open} className={styles.appbar}>
-        <Toolbar>
+      <AppBar position="fixed" color='default' open={open}>
+        <Toolbar className={styles.toolbar}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -34,8 +34,7 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
           <Typography variant="h6" noWrap component="div">
             Create a Palette
           </Typography>  
-        </Toolbar>
-        <div className={styles['nav-bts']}>
+          <div className={styles['nav-bts']}>
             <FormDialog 
               allPalettes={allPalettes} 
               savePalette={savePalette} 
@@ -51,6 +50,7 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
                 Go Back
             </Button>
           </div>
+        </Toolbar>
       </AppBar>
     </>
   )

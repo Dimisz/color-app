@@ -1,13 +1,17 @@
 
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+// mui
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+// end of mui components
+
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 
@@ -15,6 +19,8 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
   const [open, setOpen] = useState(false);
   const [newPaletteName, setNewPaletteName] = useState('');
   const history = useNavigate();
+  // new Picker({data});
+  console.log(data);
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
@@ -49,8 +55,11 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
 
 
   return (
-    <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+    <>
+      <Button 
+        variant="outlined" 
+        onClick={handleClickOpen}
+      >
         Save Palette
       </Button>
 
@@ -74,6 +83,10 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
                   margin="dense"
                 />
             </DialogContent>
+            {/* <Picker 
+              data={data} 
+              onEmojiSelect={() => console.log('selected emji')} theme='light'
+            /> */}
             <DialogActions>
                 <Button
                   // variant='contained'
@@ -86,7 +99,7 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
             </DialogActions>
           </ValidatorForm>
       </Dialog>
-    </div>
+    </>
   );
 }
 
