@@ -13,35 +13,9 @@ import {
 import { Menu } from "@mui/icons-material";
 import FormDialog from './FormDialog';
 
-// import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
-
 
 const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, open}) => {
-  // const [newPaletteName, setNewPaletteName] = useState('');
   const history = useNavigate();
-
-  // useEffect(() => {
-  //   ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
-  //     return allPalettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase());
-  //   });
-  // }, [allPalettes]);
-
-
-  // const handleSavePalette = () => {
-  //   const newPalette = {
-  //     paletteName: newPaletteName,
-  //     id: newPaletteName.replace(/\s+/g, '-').toLowerCase(),
-  //     emoji: '🇰🇭',
-  //     colors: colors
-  //   }
-  //   savePalette(newPalette);
-  //   history('/');
-  // }
-
-  // const handleSubmitNewPalette = (e) => {
-  //   e.preventDefault();
-  //   handleSavePalette();
-  // }
 
   return(
     <>
@@ -62,28 +36,17 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
           </Typography>  
         </Toolbar>
         <div className={styles['nav-bts']}>
-            {/* <ValidatorForm onSubmit={handleSubmitNewPalette}>
-              <TextValidator
-                value={newPaletteName}
-                name='newPaletteName'
-                label='Palette Name'
-                onChange={(e) => setNewPaletteName(e.target.value)}
-                validators={['required', 'isPaletteNameUnique']}
-                errorMessages={['enter palette name', 'palette name already used']}
-              />
-              <Button
-                variant='contained'
-                color='primary'
-                type='submit'
-              >
-                Save Palette
-              </Button>
-            </ValidatorForm> */}
-            <FormDialog allPalettes={allPalettes} savePalette={savePalette} colors={colors}/>
+            <FormDialog 
+              allPalettes={allPalettes} 
+              savePalette={savePalette} 
+              colors={colors}
+              className={styles.btn}
+            />
             <Button
                 onClick={() => history('/')}
                 variant='contained'
                 color='secondary'
+                className={styles.btn}
               >
                 Go Back
             </Button>

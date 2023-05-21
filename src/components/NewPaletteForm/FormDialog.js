@@ -56,11 +56,10 @@ const FormDialog = ({allPalettes, savePalette, colors}) => {
 
       <Dialog open={open} onClose={handleClose}>
         <ValidatorForm onSubmit={handleSubmitNewPalette}>
-          <DialogTitle>Save Palette</DialogTitle>
+          <DialogTitle>Choose a Palettes Name</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                To subscribe to this website, please enter your email address here. We
-                will send updates occasionally.
+                Please enter a name for your new palette. Make sure it's unique.
               </DialogContentText>
               <TextValidator
                   value={newPaletteName}
