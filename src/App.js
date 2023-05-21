@@ -45,11 +45,18 @@ const App = () => {
     // console.log(newPalette);
   }
 
+  const deletePalette = (paletteId) => {
+    const filteredPalettes = palettes.filter((palette) => {
+      return palette.id !== paletteId;
+    });
+    setPalettes(filteredPalettes);
+  }
+
   return(
     <Routes>
       <Route 
           path='/' 
-          element={<PaletteList palettes={palettes}/>} 
+          element={<PaletteList palettes={palettes} deletePalette={deletePalette}/>} 
       />
       <Route 
           path='/palette/new' 

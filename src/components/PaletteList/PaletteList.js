@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import MiniPalette from "./MiniPalette";
 import styles from './PaletteList.module.css';
 
-export default function PaletteList({palettes}){
+export default function PaletteList({palettes, deletePalette}){
   
   const renderedPalettes = palettes.map((palette) => {
     return (
     // <Link key={palette.id} to={`/palette/${palette.id}`}>
-      <MiniPalette key={palette.id} {...palette}/>
+      <MiniPalette key={palette.id} deletePalette={deletePalette} {...palette}/>
     // </Link>
     );
   });

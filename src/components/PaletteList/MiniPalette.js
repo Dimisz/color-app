@@ -1,12 +1,18 @@
 import styles from './MiniPalette.module.css';
 import { useNavigate } from 'react-router-dom';
+import { Delete } from '@mui/icons-material';
 
-export default function MiniPalette({paletteName, emoji, colors, id}){
+export default function MiniPalette({paletteName, emoji, colors, id, deletePalette}){
   const history = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
     history(`/palette/${id}`);
+  }
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+    deletePalette(id);
   }
   
   const miniColorBoxes = colors.map((color) => {
@@ -19,9 +25,17 @@ export default function MiniPalette({paletteName, emoji, colors, id}){
         }}
       ></div>
     )
-  })
+  });
+
   return(
     <div className={styles.root} onClick={handleClick}>
+      <Delete 
+        onClick={handleDelete}
+        className={styles['delete-icon']}
+        style={{
+          transition: 'all 1.5s ease-in-out'
+        }}
+      />
       <div className={styles.colors}>
         {miniColorBoxes}
       </div>
