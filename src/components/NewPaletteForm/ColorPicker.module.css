@@ -41,8 +41,13 @@
   width: 50%;
 }
 
-/* .MuiDrawer-root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+@media (max-width: 575.98px){
+  .container {
+    width: 100%;
+
+  }
+
+  /* .picker {
+    margin-top: 0;
+  } */
+}

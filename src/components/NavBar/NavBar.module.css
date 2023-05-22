@@ -55,7 +55,17 @@
   margin-top: -3px;
 }
 
-.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+.rc-slider-handle-dragging {
   border-color: green;
   box-shadow: none;
+}
+
+@media (max-width: 575.98px){
+  .logo {
+    display: none;
+  }
+
+  .slider {
+    width: 150px;
+  }
 }
