@@ -1,5 +1,4 @@
 import { Route, Routes, useParams } from 'react-router-dom';
-import { useState } from 'react';
 import useLocalStorageState from './hooks/useLocalStorageState';
 
 import Palette from "./components/Palette/Palette";

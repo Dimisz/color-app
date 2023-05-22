@@ -1,6 +1,8 @@
 .root {
-  background-color: blue;
+  background: linear-gradient(#190073,#591279);
+  /* #190073; */
   height: 100vh;
+  overflow: scroll;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -8,7 +10,7 @@
 .container {
   width: 50%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   /* border: 1px solid white; */
@@ -36,4 +38,39 @@
 
 a {
   text-decoration: none;
+}
+
+@media (max-width: 991.98px){
+  .container {
+    width: 80%;
+    margin: 1rem;
+  }
+}
+
+
+@media (max-width: 767.98px){
+  .container {
+    width: 90%;
+    margin: 1rem;
+  }
+
+  .palettes {
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 1rem;
+  }
+}
+
+
+@media (max-width: 575.98px){
+
+  .container {
+    margin: 0 1rem;
+    /* margin-left: 1rem; */
+    width: 100%;
+  }
+
+  .palettes {
+    grid-template-columns: repeat(1, 100%);
+    grid-gap: 0.5rem;
+  }
 }
