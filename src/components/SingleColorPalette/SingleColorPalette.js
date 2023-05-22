@@ -50,7 +50,7 @@ export default function SingleColorPalette({palette, colorId}){
   })
 
   return(
-    <div className={`${styles.palette} ${styles['single-color-palette']}`}>
+    <div className={`${styles.palette} ${colorboxStyles['single-color-palette']}`}>
       <NavBar handleSelect={handleSelect} showSlider={false}/>
       <SnackBar 
         format={format} 
