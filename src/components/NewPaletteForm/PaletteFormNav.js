@@ -68,18 +68,18 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
                 marginLeft: '0.5rem'
               }}
             />
-            <Button
-                onClick={() => history('/')}
-                variant='contained'
-                color='secondary'
-                className={styles.btn}
-                style={{
-                  marginRight: '0.5rem',
-                  marginLeft: '0.5rem'
-                }}
-              >
-                Go Back
-            </Button>
+              <Button
+                  onClick={() => history('/')}
+                  variant='contained'
+                  color='secondary'
+                  className={styles.btn}
+                  style={{
+                    marginRight: '0.5rem',
+                    marginLeft: '0.5rem'
+                  }}
+                >
+                  Go Back
+              </Button>
           </div>
       </AppBar>
     </>

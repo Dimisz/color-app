@@ -14,19 +14,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     height: 'calc(100vh - 64px)',
     // padding: theme.spacing(3),
     padding: 0,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(1),
     marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
   }),
 );
 
@@ -65,9 +54,16 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
   }
 
   const addRandomColor = () => {
-    const randomPaletteIdx = Math.floor(Math.random() * allPalettes.length);
-    const randomColorIdx = Math.floor(Math.random() * allPalettes[randomPaletteIdx].colors.length);
-    const randomColor = allPalettes[randomPaletteIdx].colors[randomColorIdx];
+    let randomColor = '';
+    let colorUnique = false;
+    while(!colorUnique){
+        const randomPaletteIdx = Math.floor(Math.random() * allPalettes.length);
+        const randomColorIdx = Math.floor(Math.random() * allPalettes[randomPaletteIdx].colors.length);
+        randomColor = allPalettes[randomPaletteIdx].colors[randomColorIdx];
+        colorUnique = colors.every((color) => {
+          return color.name !== randomColor.name;
+        });
+    }
     addColor(randomColor);
   }
 

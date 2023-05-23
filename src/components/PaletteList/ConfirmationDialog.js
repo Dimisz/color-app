@@ -26,12 +26,12 @@ const ConfirmationDialog = ({isOpen, closeConfirmationDialog, deletePalette, id}
   }
 
   return(
-    <Dialog open={isOpen}>
-        <DialogTitle>
+    <Dialog open={isOpen} aria-labelledby='delete-palette-confirmation-dialog'>
+        <DialogTitle id='delete-palette-confirmation-dialog'>
         Are you sure?
         </DialogTitle>
         <List>
-          <ListItem onClick={handleDelete}>
+          <ListItem button onClick={handleDelete}>
             <ListItemAvatar>
               <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                 <Check/>
@@ -40,7 +40,7 @@ const ConfirmationDialog = ({isOpen, closeConfirmationDialog, deletePalette, id}
             <ListItemText primary='Delete' />
           </ListItem>
 
-          <ListItem onClick={handleClose}>
+          <ListItem button onClick={handleClose}>
             <ListItemAvatar>
               <Avatar sx={{ bgcolor: red[100], color: red[600] }}>
                 <Close/>
