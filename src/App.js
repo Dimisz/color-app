@@ -8,7 +8,7 @@ import NewPaletteForm from './components/NewPaletteForm/NewPaletteForm';
 
 import seedColors from "./helpers/seedColors";
 import { generatePalette } from "./helpers/colorHelpers";
-
+import './App.css';
 
 const App = () => {
   const [palettes, setPalettes] = useLocalStorageState('palettes', seedColors);

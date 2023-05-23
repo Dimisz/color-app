@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import MiniPalette from "./MiniPalette";
 import styles from './PaletteList.module.css';
 
@@ -6,9 +7,13 @@ export default function PaletteList({palettes, deletePalette}){
   
   const renderedPalettes = palettes.map((palette) => {
     return (
-    // <Link key={palette.id} to={`/palette/${palette.id}`}>
-      <MiniPalette key={palette.id} deletePalette={deletePalette} {...palette}/>
-    // </Link>
+    <CSSTransition 
+      key={palette.id}
+      classNames='fade'
+      timeout={500}
+    >
+      <MiniPalette deletePalette={deletePalette} {...palette}/>
+    </CSSTransition>
     );
   });
 
@@ -19,9 +24,9 @@ export default function PaletteList({palettes, deletePalette}){
           <h1>React Colors</h1>
           <Link to='/palette/new'>Create Palette</Link>
         </nav>
-        <div className={styles.palettes}>
+        <TransitionGroup className={styles.palettes}>
           {renderedPalettes}
-        </div>
+        </TransitionGroup>
       </div>
     </div>
   );
