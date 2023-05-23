@@ -1,8 +1,12 @@
 import styles from './MiniPalette.module.css';
 import { useNavigate } from 'react-router-dom';
-import { Delete } from '@mui/icons-material';
+import { useState } from 'react';
 
-export default function MiniPalette({paletteName, emoji, colors, id, deletePalette}){
+import { Delete } from '@mui/icons-material';
+import ConfirmationDialog from './ConfirmationDialog';
+
+const MiniPalette = ({paletteName, emoji, colors, id, deletePalette}) => {
+  const [isConfirmationDialogOpen, setIsConfirmationDialogOpen] = useState(false);
   const history = useNavigate();
 
   const handleClick = (e) => {
@@ -12,7 +16,8 @@ export default function MiniPalette({paletteName, emoji, colors, id, deletePalet
 
   const handleDelete = (e) => {
     e.stopPropagation();
-    deletePalette(id);
+    setIsConfirmationDialogOpen(true);
+    // deletePalette(id);
   }
   
   const miniColorBoxes = colors.map((color) => {
@@ -43,6 +48,14 @@ export default function MiniPalette({paletteName, emoji, colors, id, deletePalet
         {paletteName} 
         <span className={styles.emoji}>{emoji}</span>
       </h5>
+      <ConfirmationDialog
+        isOpen={isConfirmationDialogOpen}
+        closeConfirmationDialog={() => setIsConfirmationDialogOpen(false)}
+        deletePalette={deletePalette} 
+        id={id}
+      />
     </div>
   )
 }
+
+export default MiniPalette;
