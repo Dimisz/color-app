@@ -14,7 +14,6 @@
   width: 100%;
   left: 0px;
   bottom: 0px;
-  padding: 10px;
   color: rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -23,12 +22,19 @@
   justify-content: space-between;
 }
 
-.delete-icon {
-  transition: all 0.4s ease-in-out;
+.box-content span,
+.box-content svg {
+  padding: 10px;
 }
+
+.delete-icon {
+  transition: all 0.5s;
+}
+
 .delete-icon:hover {
+  transition: all 0.5s;
   color: white;
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 @media (max-width: 991.98px){

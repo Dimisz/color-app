@@ -15,9 +15,9 @@ export default function NavBar({level, changeLevel, handleSelect, showSlider}){
         <Link to='/'>Color Picker</Link>
       </div>
       {showSlider &&
-      <div>
-        <span>Level: {level}</span>
+      
         <div className={styles.slider}>
+            <span>Level: {level}</span>
             <Slider
               defaultValue={level}
               min={100}
@@ -26,15 +26,15 @@ export default function NavBar({level, changeLevel, handleSelect, showSlider}){
               onAfterChange={changeLevel}
             />
         </div>
-      </div>
+      
       }
-      <div className={styles['select-container']}>
-        <NativeSelect onChange={handleSelect}>
+      {/* <div className={styles['select-container']}> */}
+        <NativeSelect onChange={handleSelect} className={styles['select-container']}>
           <option value='hex'>HEX - #ffffff</option>
           <option value='rgb'>RGB - rgb(255, 255, 255)</option>
           <option value='rgba'>RGBA - rgba(255, 255, 255, 1.0)</option>
         </NativeSelect>
-      </div>
+      {/* </div> */}
     </header>
   );
 }

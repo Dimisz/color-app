@@ -1,6 +1,7 @@
 import { Route, Routes, useParams, useLocation } from 'react-router-dom';
 import useLocalStorageState from './hooks/useLocalStorageState';
 
+import Page from './components/PageWrapper/Page';
 import Palette from "./components/Palette/Palette";
 import PaletteList from "./components/PaletteList/PaletteList";
 import SingleColorPalette from "./components/SingleColorPalette/SingleColorPalette";
@@ -29,7 +30,7 @@ const App = () => {
   
   const SingleColorPaletteWrapper = () => {
     const { paletteId, colorId } = useParams();
-    console.log(paletteId, colorId);
+    // console.log(paletteId, colorId);
     const palette = generatePalette(findPalette(paletteId));
     return(
       <SingleColorPalette 
@@ -59,39 +60,39 @@ const App = () => {
           <Route
               path='/'
               element={
-                <div className='page'>
+                <Page>
                   <PaletteList 
                     palettes={palettes} 
                     deletePalette={deletePalette}
                   />
-                </div>
+                </Page>
                 }
           />
           <Route
               path='/palette/new'
               element={
-                      <div className='page'>
+                      <Page>
                         <NewPaletteForm
                           savePalette={savePalette}
                           allPalettes={palettes}
                         />
-                      </div>
+                      </Page>
                     }
           />
           <Route
               path='/palette/:id'
               element={
-                <div className='page'>
+                <Page>
                   <PaletteWrapper />
-                </div>
+                </Page>
               }
           />
           <Route
               path='/palette/:paletteId/:colorId'
               element={
-                <div className='page'>
+                <Page>
                   <SingleColorPaletteWrapper/>
-                </div>
+                </Page>
                 }
           />
         </Routes>

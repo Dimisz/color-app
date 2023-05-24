@@ -3,7 +3,6 @@ import React from "react";
 import styles from './PaletteFormNav.module.css';
 
 import { 
-  CssBaseline,
   AppBar,
   Toolbar,
   Typography,
@@ -19,9 +18,7 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
 
   return(
     <>
-      <CssBaseline />
       <AppBar 
-        // className={styles.appbar}
         position="fixed" 
         color='default' 
         open={open} 

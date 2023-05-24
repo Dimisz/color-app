@@ -6,6 +6,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  /* line-height: 1; */
 }
 .container {
   width: 50%;
