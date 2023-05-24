@@ -12,7 +12,6 @@ import {
 import { AddToPhotos } from "@mui/icons-material";
 import FormDialog from './FormDialog';
 
-
 const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, open}) => {
   const history = useNavigate();
 
@@ -22,12 +21,12 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
         position="fixed" 
         color='default' 
         open={open} 
-        style={{
+        sx={{
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '64px'
+          height: '10%'
         }}
       >
         <Toolbar>
@@ -36,24 +35,25 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{ 
+              mr: 2, 
+              ...(open && { display: 'none' }) 
+            }}
           >
             <AddToPhotos />
           </IconButton>
           <Typography 
             variant="h5" 
             noWrap color='inherit' 
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{ 
+              mr: 2, 
+              display: { xs: 'none', sm: 'contents'},
+              ...(open && { display: 'none' }) 
+            }}
           >
             Create a Palette
           </Typography>  
         </Toolbar>
-        {/* <Typography 
-            variant="h5" 
-            noWrap color='inherit' 
-          >
-            Create a Palette
-          </Typography>  */}
         <div className={styles['nav-bts']}>
             <FormDialog 
               allPalettes={allPalettes} 

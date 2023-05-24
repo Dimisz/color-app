@@ -1,28 +1,18 @@
-.appbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  height: 64px;
-  /* border: 5px solid black; */
-}
-
 .nav-bts {
   margin-right: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* border: 5px dashed black; */
 }
 
 .btn {
   margin: 0 0.5rem;
 }
 
-@media (max-width: 575.98px){
+@media (max-width: 600px){
   .nav-bts {
-    margin-right: 0;
+    /* padding-bottom: 1rem; */
   }
 
   .btn {
