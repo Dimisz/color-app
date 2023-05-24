@@ -9,13 +9,3 @@
 .btn {
   margin: 0 0.5rem;
 }
-
-@media (max-width: 600px){
-  .nav-bts {
-    /* padding-bottom: 1rem; */
-  }
-
-  .btn {
-    margin: 0 0.2rem;
-  }
-}

@@ -11,11 +11,10 @@ const drawerWidth = 400;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
-    height: 'calc(100vh - 64px)',
-    // padding: theme.spacing(3),
-    padding: 0,
-    marginTop: theme.spacing(1),
+    height: '100vh',
     marginLeft: `-${drawerWidth}px`,
+    // marginTop: 0,
+    // padding: 0
   }),
 );
 
@@ -32,8 +31,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 const NewPaletteForm = ({savePalette, allPalettes}) => {
-  // const history = useNavigate();
-  // const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [colors, setColors] = useState(allPalettes[0].colors);
   
@@ -88,7 +85,7 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: {xs: '100%', sm: '50%'},
             boxSizing: 'border-box',
           },
         }}

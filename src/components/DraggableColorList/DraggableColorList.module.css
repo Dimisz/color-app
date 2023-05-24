@@ -1,0 +1,11 @@
+.container {
+  height: 100vh;
+  margin-top: 2%;
+}
+
+@media (max-width: 575.98px){
+  .container {
+    margin-top: 5%;
+  }
+}
+
