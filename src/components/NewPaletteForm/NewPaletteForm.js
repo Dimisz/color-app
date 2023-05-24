@@ -13,8 +13,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     flexGrow: 1,
     height: '100vh',
     marginLeft: `-${drawerWidth}px`,
-    // marginTop: 0,
-    // padding: 0
   }),
 );
 
@@ -85,7 +83,9 @@ const NewPaletteForm = ({savePalette, allPalettes}) => {
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: {xs: '100%', sm: '50%'},
+            height: '100vh',
+            overflow: 'hidden',
+            width: {xs: '100%', sm: '50%', md: '40%', lg: '30%'},
             boxSizing: 'border-box',
           },
         }}

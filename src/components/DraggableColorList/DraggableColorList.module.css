@@ -1,11 +1,13 @@
 .container {
-  height: 100vh;
-  margin-top: 2%;
+  height: 90vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 
 @media (max-width: 575.98px){
   .container {
-    margin-top: 5%;
+    height: 100vh;
+    margin-top: 1vh;
   }
 }
 

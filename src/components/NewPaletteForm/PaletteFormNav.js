@@ -26,7 +26,7 @@ const PaletteFormNav = ({allPalettes, savePalette, handleDrawerOpen, colors, ope
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          height: '10%'
+          height: {sx: '5%', sm: '10%'}
         }}
       >
         <Toolbar>
