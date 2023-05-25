@@ -4,15 +4,19 @@
   width: 100%;
   top: 0;
   transition: opacity 0.5s;
+  /* transition: transform 0.5s; */
 }
 
 .page-enter {
   opacity: 0;
+  /* transform: translateX(100%); */
 }
 .page-enter-active {
   opacity: 1;
+  /* transform: translateX(0); */
 }
 
 .page-exit-active {
   opacity: 0;
+  /* transform: translateX(-100%); */
 }
