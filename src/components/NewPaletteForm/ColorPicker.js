@@ -74,6 +74,7 @@ export default function ColorPicker({onAdd, colors, clearColors, addRandomColor}
           <ValidatorForm
             onSubmit={submitNewColor}
             className={styles['validator-form']}
+            instantValidate={false}
           >
             <TextValidator 
               value={enteredColorName}

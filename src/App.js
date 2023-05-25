@@ -95,6 +95,17 @@ const App = () => {
                 </Page>
                 }
           />
+          <Route
+              path='/:wrong?'
+              element={
+                <Page>
+                  <PaletteList 
+                    palettes={palettes} 
+                    deletePalette={deletePalette}
+                  />
+                </Page>
+                }
+          />
         </Routes>
       </CSSTransition>
     </TransitionGroup>

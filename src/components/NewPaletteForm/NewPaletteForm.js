@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Box, Drawer, Divider, IconButton } from "@mui/material";
 import { ChevronLeft } from "@mui/icons-material";
+import colorPalettes from "../../helpers/seedColors";
 
 import ColorPicker from "./ColorPicker";
 import PaletteFormNav from './PaletteFormNav';
@@ -30,7 +31,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const NewPaletteForm = ({savePalette, allPalettes}) => {
   const [open, setOpen] = useState(false);
-  const [colors, setColors] = useState(allPalettes[0].colors);
+  const [colors, setColors] = useState(colorPalettes[0].colors);
   
   const handleDrawerOpen = () => {
     setOpen(true);

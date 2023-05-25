@@ -14,8 +14,8 @@ const useLocalStorageState = (key, defaultVal) => {
     catch(e){
       val = defaultVal;
     }
-    console.log('from custom hook');
-    console.log(val);
+    // console.log('from custom hook');
+    // console.log(val);
     return val;
   });
 

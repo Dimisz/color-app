@@ -31,7 +31,7 @@ export default function SingleColorPalette({palette, colorId}){
         })
       );
     }
-    console.log(shades.slice(1));
+    // console.log(shades.slice(1));
     return shades.slice(1);
   }
 
